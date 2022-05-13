@@ -1,0 +1,90 @@
+public class Instrumento{
+
+protected int tipoInstrumento; // 0 para cuerdas, 1 para baterias
+protected double precio;
+protected String marca;
+
+
+	public Instrumento(double precio, String marca){
+
+		
+		this.precio = precio;
+		this.marca = marca;
+	}
+
+
+	public void setTipoInstrumento(int tipo){
+		this.tipoInstrumento = tipo;
+	}
+
+	
+}
+
+
+public class Bateria extends Instrumento{
+
+private int tambores;
+private int platillos;
+
+	public Bateria(int tambores, int platillos, String marca)){
+		
+		if(tambores>=3){
+			this.tambores = tambores;
+		}else{
+			this.tambores = 3;
+		}
+
+		if(platillos>=1){
+			this.platillos = platillos;
+		}else{
+			this.platillos = 1;
+		}
+		super(tambores * 3000 + platillos * 2000,marca);
+		this.setTipoInstrumento(1);
+	}
+
+	
+}
+
+public class Cuerda extends Instrumento{
+
+private int cantiCuerdas;
+
+	public Cuerda(int cuerdas, int precio, String marca){
+		
+		super(precio, marca);
+		this.cantiCuerdas = cuerdas;
+		this.setTipoInstrumento(0);
+	}
+}
+
+public class Electrico extends Cuerda{
+
+private String modelo;
+private int tipoCuerda; //0 para guitarra electrica, 1 para bajo
+	
+	public Electrico(int tipoCuerda, String modelo, int precio, String marca){
+		
+		if(tipoCuerda == 0){
+			super(6, precio, marca);	
+		}
+		if(tipoCuerda == 1){
+			super(4, precio, marca);
+		}
+		this.modelo = modelo;
+		this.tipoCuerda = tipoCuerda;
+	}
+}
+
+public class Acustica extends Cuerda{
+
+private String tipoMadera;
+
+	public Acustica(int precio, String marca, String tipoMadera){
+		
+		super(6, precio, marca);
+		this.tipoMadera = tipoMadera;
+	}
+
+
+}
